@@ -1,8 +1,7 @@
 name: ML Pipeline
-
 on:
   push:
-    branches: [ main, Assignment5_MLOPs_Basics]
+    branches: [Assignment5_MLOPs_Basics]
   pull_request:
     branches: [ main ]
 
