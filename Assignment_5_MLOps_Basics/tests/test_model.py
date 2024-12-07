@@ -3,7 +3,9 @@ import pytest
 from torchvision import datasets, transforms
 from model.network import SimpleCNN
 import torch.nn.utils.prune as prune
-
+import os
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, "models")
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
@@ -18,14 +20,16 @@ def test_input_output_shape():
     output = model(test_input)
     assert output.shape == (1, 10), f"Output shape is {output.shape}, should be (1, 10)"
 
-def test_model_accuracy():
+@pytest.mark.parametrize("accuracy_threshold", [95])
+def test_model_accuracy(models_dir, accuracy_threshold):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
     model = SimpleCNN().to(device)
     
     # Load the latest model
     import glob
     import os
-    model_files = glob.glob('models/*.pth')
+    model_files = glob.glob(f'{models_dir}/*.pth')
+    assert model_files, f"No model files found in directory: {models_dir}"
     latest_model = max(model_files, key=os.path.getctime)
     model.load_state_dict(torch.load(latest_model))
     
