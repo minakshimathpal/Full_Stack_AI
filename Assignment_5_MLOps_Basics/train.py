@@ -13,6 +13,7 @@ import matplotlib.pyplot as plt
 # Determine absolute path for the models directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
 MODELS_DIR = os.path.join(BASE_DIR, "models")
+ARTIFACTS_DIR = os.path.join(BASE_DIR, "artifacts")
 
 def set_seeds(seed=42):
     """
@@ -81,11 +82,13 @@ def visualize_augmentations(dataset, num_samples=5):
     plt.tight_layout()
     
     # Save the figure
-    if not os.path.exists('artifacts'):
-        os.makedirs('artifacts')
-    plt.savefig('artifacts/augmentation_samples.png')
+    if not os.path.exists(ARTIFACTS_DIR):
+        os.makedirs(ARTIFACTS_DIR)
+
+    # Save the augmented images
+    plt.savefig(os.path.join(ARTIFACTS_DIR, 'augmentation_samples.png'))
     plt.close()
-    
+
 def train():
     # Set seeds for reproducibility
     set_seeds(42)
