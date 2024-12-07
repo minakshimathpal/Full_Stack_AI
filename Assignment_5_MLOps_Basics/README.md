@@ -1,6 +1,6 @@
 # MNIST MLOps Project
 
-[![CI Pipeline](https://github.com/minakshimathpal/FULL_STACK_AI/actions/workflows/ml-pipeline.yml/badge.svg?branch=Assignment5_MLOPs_Basics)](https://github.com/minakshimathpal/FULL_STACK_AI/actions/workflows/ml-pipeline.yml)
+[![CI Pipeline](https://github.com/minakshimathpal/FULL_STACK_AI/actions/workflows/ci-pipeline.yml/badge.svg?branch=Assignment5_MLOPs_Basics)](https://github.com/minakshimathpal/FULL_STACK_AI/actions/workflows/ci-pipeline.yml)
 
 This project implements a lightweight CNN model for MNIST digit classification with MLOps practices. The model is designed to achieve >95% accuracy in one epoch while keeping parameters under 25,000.
 ## Data Augmentation
