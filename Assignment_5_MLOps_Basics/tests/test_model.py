@@ -12,7 +12,7 @@ def count_parameters(model):
 def test_model_parameters():
     model = SimpleCNN()
     num_params = count_parameters(model)
-    assert num_params < 15000, f"Model has {num_params} parameters, should be less than 15000"
+    assert num_params < 25000, f"Model has {num_params} parameters, should be less than 25000"
 
 def test_input_output_shape():
     model = SimpleCNN()

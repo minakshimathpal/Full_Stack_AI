@@ -1,5 +1,7 @@
 # MNIST MLOps Project
 
+[![ML Pipeline](https://github.com/minakshimathpal/FULL_STACK_AI/actions/workflows/ml-pipeline.yml/badge.svg?branch=Assignment5_MLOps_Basics)](https://github.com/minakshimathpal/FULL_STACK_AI/actions/workflows/ml-pipeline.yml)
+
 This project implements a lightweight CNN model for MNIST digit classification with MLOps practices. The model is designed to achieve >95% accuracy in one epoch while keeping parameters under 25,000.
 ## Data Augmentation
 We apply several augmentation techniques to improve model robustness:
@@ -130,7 +132,7 @@ This comprehensive testing strategy ensures:
 - Correct input/output handling
 - Single prediction capability
 - Overall accuracy requirements
-```
+
 # Summary of CI/CD in Machine Learning (ML)
 ![CICD Pipeline](artifacts/image-2.png)
 
