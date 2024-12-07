@@ -9,6 +9,10 @@ import random
 import numpy as np
 from torch.backends import cudnn
 
+# Determine absolute path for the models directory
+BASE_DIR = os.path.dirname(os.path.abspath(__file__))
+MODELS_DIR = os.path.join(BASE_DIR, "models")
+
 def set_seeds(seed=42):
     """
     Set seeds for reproducibility across all required libraries and functions
@@ -74,9 +78,9 @@ def train():
     
     # Save model with timestamp
     timestamp = datetime.now().strftime("%Y%m%d_%H%M%S")
-    if not os.path.exists('models'):
-        os.makedirs('models')
-    torch.save(model.state_dict(), f'models/model_{timestamp}.pth')
+    if not os.path.exists(MODELS_DIR):
+        os.makedirs(MODELS_DIR)
+    torch.save(model.state_dict(), os.path.join(MODELS_DIR, f"model_{timestamp}.pth"))
     
 if __name__ == "__main__":
     train() 
