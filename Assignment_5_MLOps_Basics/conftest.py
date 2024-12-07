@@ -10,6 +10,12 @@ def models_dir():
     base_dir = os.path.dirname(os.path.abspath(__file__))
     return os.path.join(base_dir, "models")
 
+@pytest.fixture(scope="module") 
+def artifacts_dir():
+    """Provide the directory where artifacts are saved."""
+    base_dir = os.path.dirname(os.path.abspath(__file__))
+    return os.path.join(base_dir, "artifacts")
+
 @pytest.fixture(scope="module")
 def mnist_test_data():
     """Fixture to load the MNIST test dataset."""

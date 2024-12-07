@@ -4,8 +4,9 @@ from torchvision import datasets, transforms
 from model.network import SimpleCNN
 import torch.nn.utils.prune as prune
 import os
-BASE_DIR = os.path.dirname(os.path.abspath(__file__))
-MODELS_DIR = os.path.join(BASE_DIR, "models")
+import matplotlib.pyplot as plt
+
+
 def count_parameters(model):
     return sum(p.numel() for p in model.parameters() if p.requires_grad)
 
@@ -49,3 +50,55 @@ def test_model_accuracy(mnist_test_data,get_latest_model, accuracy_threshold):
     
     accuracy = 100 * correct / total
     assert accuracy > 95, f"Model accuracy is {accuracy}%, should be > 95%" 
+
+
+
+def test_robustness_against_noise(get_latest_model, mnist_test_data, artifacts_dir):
+    """
+    Test model's robustness against noisy inputs and save noisy image visualization.
+    """
+    model = get_latest_model
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model.to(device)
+    model.eval()
+    
+    # Add Gaussian noise to a sample batch
+    data_iter = iter(mnist_test_data)
+    images, labels = next(data_iter)
+    images = images.to(device)
+    labels = labels.to(device)
+
+    noise = torch.randn_like(images) * 0.3  # Adding small noise
+    noisy_images = images + noise
+    
+    with torch.no_grad():
+        outputs = model(noisy_images)
+        _, predictions = torch.max(outputs, 1)
+        correct = (predictions == labels).sum().item()
+    
+    accuracy = 100 * correct / labels.size(0)
+    assert accuracy > 90, f"Model robustness to noise is inadequate. Accuracy: {accuracy}%, should be > 90%"
+
+    # Save noisy image visualization
+    os.makedirs(artifacts_dir, exist_ok=True)  # Ensure artifacts folder exists
+    filepath = os.path.join(artifacts_dir, "noisy_images_visualization.png")
+    plt.figure(figsize=(10, 5))
+    num_images = 5
+    for i in range(num_images):
+        # Original image
+        plt.subplot(2, num_images, i + 1)
+        plt.imshow(images[i].squeeze().cpu().numpy(), cmap="gray")
+        plt.title(f"Original: {labels[i].item()}")
+        plt.axis("off")
+        
+        # Noisy image
+        plt.subplot(2, num_images, num_images + i + 1)
+        plt.imshow(noisy_images[i].squeeze().cpu().numpy(), cmap="gray")
+        plt.title("Noisy")
+        plt.axis("off")
+
+    plt.tight_layout()
+    plt.savefig(filepath)
+    plt.close()  # Close the plot to free memory
+    print(f"Noisy images visualization saved at: {filepath}")
+
