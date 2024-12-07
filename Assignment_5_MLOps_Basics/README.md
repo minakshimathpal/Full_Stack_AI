@@ -30,7 +30,9 @@ The GitHub Actions workflow (`ml-pipeline.yml`) automatically:
 
 ## Model Architecture
 - Input: 28x28 MNIST images
-- 2 Convolutional layers
+- 7 Convolutional layers
+- Batch Normalization
+- kernels used #X# and 1X1
 - MaxPooling
 - Fully connected layer
 - Output: 10 classes
@@ -40,6 +42,7 @@ Tests verify:
 1. Model parameter count (<25K)
 2. Input/output shapes
 3. Model accuracy (>95%)
+4. Comparision of predicted label with actual label
 
 ## Detailed Testing Strategy
 
@@ -54,13 +57,13 @@ We use three main fixtures:
 ### Test Cases (test_model.py)
 
 #### 1. Model Architecture Test
-python
+```python
 def test_model_parameters():
     model = SimpleCNN()
     num_params = count_parameters(model)
-    assert num_params < 15000
+    assert num_params < 25000, f"Model has {num_params} parameters, should be less than 25000"
 ```
-- Verifies the model has less than 15,000 parameters
+- Verifies the model has less than 25,000 parameters
 - Ensures model maintains lightweight architecture requirement
 
 #### 2. Input/Output Shape Test
@@ -69,7 +72,7 @@ def test_input_output_shape():
     model = SimpleCNN()
     test_input = torch.randn(1, 1, 28, 28)
     output = model(test_input)
-    assert output.shape == (1, 10)
+    assert output.shape == (1, 10), f"Output shape is {output.shape}, should be (1, 10)"
 ```
 - Validates model accepts 28x28 MNIST images
 - Confirms output shape matches 10 class predictions
@@ -77,11 +80,14 @@ def test_input_output_shape():
 #### 3. Single Image Prediction Test
 ```python
 def test_single_image_prediction(get_latest_model, mnist_test_data):
-    images, labels = next(iter(mnist_test_data))
-    image = images[0].unsqueeze(0)
+    images, labels = next(iter(mnist_test_data))  # Get the first batch
+    image = images[0].unsqueeze(0)  # Get the first image and add batch dimension
     label = labels[0].item()
-    predicted_label = ...
-    assert predicted_label.item() == label
+    cnn_model = get_latest_model
+    output = cnn_model(image)
+    _, predicted_label = torch.max(output, 1)
+    
+    assert predicted_label.item() == label, f"Single image prediction failed. True: {label}, Predicted: {predicted_label.item()}"
 ```
 - Tests model's ability to predict individual images
 - Verifies prediction matches ground truth
@@ -89,9 +95,24 @@ def test_single_image_prediction(get_latest_model, mnist_test_data):
 #### 4. Model Accuracy Test
 ```python
 @pytest.mark.parametrize("accuracy_threshold", [95])
-def test_model_accuracy(mnist_test_data, get_latest_model, accuracy_threshold):
-    # Test implementation
-    assert accuracy > 95
+def test_model_accuracy(mnist_test_data,get_latest_model, accuracy_threshold):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = get_latest_model
+    # get test data      
+    test_loader = mnist_test_data   
+    correct = 0
+    total = 0
+    
+    with torch.no_grad():
+        for data, target in test_loader:
+            data, target = data.to(device), target.to(device)
+            outputs = model(data)
+            _, predicted = torch.max(outputs.data, 1)
+            total += target.size(0)
+            correct += (predicted == target).sum().item()
+    
+    accuracy = 100 * correct / total
+    assert accuracy > 95, f"Model accuracy is {accuracy}%, should be > 95%" 
 ```
 - Evaluates model on full test dataset
 - Ensures >95% accuracy requirement is met
