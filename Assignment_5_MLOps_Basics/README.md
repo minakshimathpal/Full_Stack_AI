@@ -120,6 +120,32 @@ def test_model_accuracy(mnist_test_data,get_latest_model, accuracy_threshold):
 - Ensures >95% accuracy requirement is met
 - Uses parameterization for flexible threshold testing
 
+#### 5. Model Accuracy On Noisy Images
+```python
+@pytest.mark.parametrize("accuracy_threshold", [95])
+def test_model_accuracy(mnist_test_data,get_latest_model, accuracy_threshold):
+    device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
+    model = get_latest_model
+    # get test data      
+    test_loader = mnist_test_data   
+    correct = 0
+    total = 0
+    
+    with torch.no_grad():
+        for data, target in test_loader:
+            data, target = data.to(device), target.to(device)
+            outputs = model(data)
+            _, predicted = torch.max(outputs.data, 1)
+            total += target.size(0)
+            correct += (predicted == target).sum().item()
+    
+    accuracy = 100 * correct / total
+    assert accuracy > accuracy_threshold, f"Model accuracy is {accuracy}%, should be > {accuracy_threshold}%" 
+```
+- Evaluates model on full test dataset
+- Ensures >95% accuracy requirement is met
+- Uses parameterization for flexible threshold testing
+
 ### Test Execution
 Tests are automatically run in our CI/CD pipeline:
 1. Model training

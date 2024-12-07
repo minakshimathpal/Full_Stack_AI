@@ -49,11 +49,11 @@ def test_model_accuracy(mnist_test_data,get_latest_model, accuracy_threshold):
             correct += (predicted == target).sum().item()
     
     accuracy = 100 * correct / total
-    assert accuracy > 95, f"Model accuracy is {accuracy}%, should be > 95%" 
+    assert accuracy > accuracy_threshold, f"Model accuracy is {accuracy}%, should be > {accuracy_threshold}%" 
 
 
-
-def test_robustness_against_noise(get_latest_model, mnist_test_data, artifacts_dir):
+@pytest.mark.parametrize("accuracy_threshold", [90])
+def test_robustness_against_noise(get_latest_model, mnist_test_data, artifacts_dir, accuracy_threshold):
     """
     Test model's robustness against noisy inputs and save noisy image visualization.
     """
@@ -77,7 +77,7 @@ def test_robustness_against_noise(get_latest_model, mnist_test_data, artifacts_d
         correct = (predictions == labels).sum().item()
     
     accuracy = 100 * correct / labels.size(0)
-    assert accuracy > 90, f"Model robustness to noise is inadequate. Accuracy: {accuracy}%, should be > 90%"
+    assert accuracy > accuracy_threshold, f"Model robustness to noise is inadequate. Accuracy: {accuracy}%, should be > {accuracy_threshold}%"
 
     # Save noisy image visualization
     os.makedirs(artifacts_dir, exist_ok=True)  # Ensure artifacts folder exists
