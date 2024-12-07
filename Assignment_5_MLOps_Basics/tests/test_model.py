@@ -20,28 +20,22 @@ def test_input_output_shape():
     output = model(test_input)
     assert output.shape == (1, 10), f"Output shape is {output.shape}, should be (1, 10)"
 
+def test_single_image_prediction(get_latest_model, mnist_test_data):
+    images, labels = next(iter(mnist_test_data))  # Get the first batch
+    image = images[0].unsqueeze(0)  # Get the first image and add batch dimension
+    label = labels[0].item()
+    cnn_model = get_latest_model
+    output = cnn_model(image)
+    _, predicted_label = torch.max(output, 1)
+    
+    assert predicted_label.item() == label, f"Single image prediction failed. True: {label}, Predicted: {predicted_label.item()}"
+
 @pytest.mark.parametrize("accuracy_threshold", [95])
-def test_model_accuracy(models_dir, accuracy_threshold):
+def test_model_accuracy(mnist_test_data,get_latest_model, accuracy_threshold):
     device = torch.device("cuda" if torch.cuda.is_available() else "cpu")
-    model = SimpleCNN().to(device)
-    
-    # Load the latest model
-    import glob
-    import os
-    model_files = glob.glob(f'{models_dir}/*.pth')
-    assert model_files, f"No model files found in directory: {models_dir}"
-    latest_model = max(model_files, key=os.path.getctime)
-    model.load_state_dict(torch.load(latest_model))
-    
-    # Test data
-    test_transforms = transforms.Compose([
-        transforms.ToTensor(),
-        transforms.Normalize((0.1407,), (0.4081,))
-        ])
-    test_dataset = datasets.MNIST('data', train=False, download=True, transform=test_transforms)
-    test_loader = torch.utils.data.DataLoader(test_dataset, batch_size=1000)
-    
-    model.eval()
+    model = get_latest_model
+    # get test data      
+    test_loader = mnist_test_data   
     correct = 0
     total = 0
     
