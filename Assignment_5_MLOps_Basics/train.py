@@ -8,6 +8,7 @@ import os
 import random
 import numpy as np
 from torch.backends import cudnn
+import matplotlib.pyplot as plt
 
 # Determine absolute path for the models directory
 BASE_DIR = os.path.dirname(os.path.abspath(__file__))
@@ -34,6 +35,57 @@ def worker_init_fn(worker_id):
     np.random.seed(worker_seed)
     random.seed(worker_seed)
 
+def visualize_augmentations(dataset, num_samples=5):
+    """
+    Visualize augmented images from the dataset
+    Args:
+        dataset: MNIST dataset with transformations
+        num_samples: Number of samples to visualize (default=5)
+    """
+    # Original transformations
+    original_transforms = transforms.Compose([       
+        transforms.ToTensor(),
+        transforms.Normalize((0.1307,), (0.3081,)),
+    ])
+        
+    # Create a figure
+    fig, axes = plt.subplots(2, num_samples, figsize=(2*num_samples, 4))
+    
+    # Get some random samples
+    for i in range(num_samples):
+        index = random.randint(0, len(dataset) - 1)
+        # Get original image
+        orig_dataset = datasets.MNIST('data', train=True, download=True, 
+                                    transform=original_transforms)
+        orig_img, _ = orig_dataset[index]
+        
+        # Get augmented image
+        aug_img, _ = dataset[index]
+        
+        # Denormalize images for visualization
+        orig_img = orig_img * 0.3081 + 0.1307
+        aug_img = aug_img * 0.3081 + 0.1307
+        
+        # Plot original image
+        axes[0, i].imshow(orig_img.squeeze(), cmap='gray')
+        axes[0, i].axis('off')
+        if i == 0:
+            axes[0, i].set_title('Original')
+        
+        # Plot augmented image
+        axes[1, i].imshow(aug_img.squeeze(), cmap='gray')
+        axes[1, i].axis('off')
+        if i == 0:
+            axes[1, i].set_title('Augmented')
+    
+    plt.tight_layout()
+    
+    # Save the figure
+    if not os.path.exists('artifacts'):
+        os.makedirs('artifacts')
+    plt.savefig('artifacts/augmentation_samples.png')
+    plt.close()
+    
 def train():
     # Set seeds for reproducibility
     set_seeds(42)
@@ -51,6 +103,10 @@ def train():
     ])
         
     train_dataset = datasets.MNIST('data', train=True, download=True, transform=train_transforms)
+    
+    # Visualize augmentations - just pass the dataset
+    visualize_augmentations(train_dataset)
+    
     train_loader = torch.utils.data.DataLoader(
         train_dataset, 
         batch_size=64, 

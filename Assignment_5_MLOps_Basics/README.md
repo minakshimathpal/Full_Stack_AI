@@ -1,6 +1,22 @@
 # MNIST MLOps Project
 
 This project implements a lightweight CNN model for MNIST digit classification with MLOps practices. The model is designed to achieve >95% accuracy in one epoch while keeping parameters under 25,000.
+## Data Augmentation
+We apply several augmentation techniques to improve model robustness:
+
+1. Random Center Crop (p=0.1)
+   - Randomly crops image to 22x22 and resizes back to 28x28
+   - Helps model learn scale invariance
+
+2. Random Rotation
+   - Rotates image between -15 and 15 degrees
+   - Improves rotation invariance
+
+Here are some examples of our augmentations:
+![Augmentation Samples](./artifacts/augmentation_samples.png)
+
+- Top row: Original images
+- Bottom row: Augmented versions
 
 ## CI/CD Pipeline
 The GitHub Actions workflow (`ml-pipeline.yml`) automatically:
@@ -25,7 +41,75 @@ Tests verify:
 2. Input/output shapes
 3. Model accuracy (>95%)
 
+## Detailed Testing Strategy
 
+Our testing framework uses pytest with fixtures for efficient and reproducible testing. Here's a breakdown of our test suite:
+
+### Test Configuration (conftest.py)
+We use three main fixtures:
+1. `models_dir`: Provides the directory path for saved models
+2. `mnist_test_data`: Loads MNIST test dataset with proper transformations
+3. `get_latest_model`: Loads the most recently trained model for testing
+
+### Test Cases (test_model.py)
+
+#### 1. Model Architecture Test
+python
+def test_model_parameters():
+    model = SimpleCNN()
+    num_params = count_parameters(model)
+    assert num_params < 15000
+```
+- Verifies the model has less than 15,000 parameters
+- Ensures model maintains lightweight architecture requirement
+
+#### 2. Input/Output Shape Test
+```python
+def test_input_output_shape():
+    model = SimpleCNN()
+    test_input = torch.randn(1, 1, 28, 28)
+    output = model(test_input)
+    assert output.shape == (1, 10)
+```
+- Validates model accepts 28x28 MNIST images
+- Confirms output shape matches 10 class predictions
+
+#### 3. Single Image Prediction Test
+```python
+def test_single_image_prediction(get_latest_model, mnist_test_data):
+    images, labels = next(iter(mnist_test_data))
+    image = images[0].unsqueeze(0)
+    label = labels[0].item()
+    predicted_label = ...
+    assert predicted_label.item() == label
+```
+- Tests model's ability to predict individual images
+- Verifies prediction matches ground truth
+
+#### 4. Model Accuracy Test
+```python
+@pytest.mark.parametrize("accuracy_threshold", [95])
+def test_model_accuracy(mnist_test_data, get_latest_model, accuracy_threshold):
+    # Test implementation
+    assert accuracy > 95
+```
+- Evaluates model on full test dataset
+- Ensures >95% accuracy requirement is met
+- Uses parameterization for flexible threshold testing
+
+### Test Execution
+Tests are automatically run in our CI/CD pipeline:
+1. Model training
+2. Test suite execution
+3. Results verification
+4. Model artifact upload
+
+This comprehensive testing strategy ensures:
+- Model meets size constraints
+- Correct input/output handling
+- Single prediction capability
+- Overall accuracy requirements
+```
 # Summary of CI/CD in Machine Learning (ML)
 ![CICD Pipeline](artifacts/image-2.png)
 
@@ -128,3 +212,4 @@ MIT
 
 ## Author
 [Minakshi Mathpal]
+
