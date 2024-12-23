@@ -22,16 +22,6 @@ jobs:
         python -m pip install --upgrade pip
         pip install -r Assignment_6/requirements.txt
         
-    - name: Train model
-      run: |
-        python Assignment_5_MLOps_Basics/train.py
-        
-    - name: Run tests
-      run: |
-        pytest Assignment_5_MLOps_Basics/tests/test_model.py -v
-        
-    - name: Upload trained model
-      uses: actions/upload-artifact@v4
-      with:
-        name: trained-model
-        path: Assignment_5_MLOps_Basics/models/
+        - name: Run tests with pytest
+        run: |
+          pytest tests/test_model.py -v 
