@@ -1,4 +1,4 @@
-name: ML Pipeline
+name: CI Pipeline
 on:
   push:
     branches: [main,Assignment5_MLOPs_Basics]
