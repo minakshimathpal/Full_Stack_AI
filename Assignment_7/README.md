@@ -62,20 +62,21 @@ This project contains three different model implementations:
     Estimated Total Size (MB): 0.44
     ----------------------------------------------------------------
 ```  
-    ## Target 
-        1. Get the skeleton of the model right.
-        2.Perform MaxPooling at RF=7
-        3.Fix DropOut, add it to each layer
-    ## Results:
-        1. Parameters: __7,264__
-        2. Learning Rate: **0.0015**
-        3. Best Train Accuracy: **99.68**
-        4. Best Test Accuracy: **99.31** (14th Epoch)
-    ## Analysis: 
-        Works!
-        But we're not seeing 99.4 or more as often as we'd like. We can further improve it. 
-        The model is not over-fitting at all. 
-        Seeing image samples, we can see that we can add slight rotation.
+## Target 
+  1. Get the skeleton of the model right.
+  2.Perform MaxPooling at RF=7
+  3.Fix DropOut, add it to each layer
+## Results:
+   1. Parameters: **7,264**
+   2. Learning Rate:** **0.0015**
+   3. Best Train Accuracy:** **99.68**
+   4. Best Test Accuracy:** **99.31** **(14th Epoch)**
+
+ ## Analysis: 
+     Works!
+     But we're not seeing 99.4 or more as often as we'd like. We can further improve it. 
+     The model is not over-fitting at all. 
+     Seeing image samples, we can see that we can add slight rotation.
 
 ### Training Logs Model 1    
 ![Training Logs Model 1](artifacts/Model_1_logs.png?v=1)
@@ -126,17 +127,17 @@ This project contains three different model implementations:
     ----------------------------------------------------------------
     ```
 
-    ## Target: 
-        1. Model 1 is working well. We can try to add Random rotation and RandomAffine.
-    ## Results:
-        1. Parameters: **7,264**
-        2. Learning Rate: **0.0015**
-        3. Best Train Accuracy: **99.30**
-        4. Best Test Accuracy: **99.52** (13th Epoch)
-        5. Consistenly 99.4 + validation accuracy from 11th Epoch
-    ## Analysis:
-    The model working fine. There is very minimal difference between train and test accuracies. This proves that the model is stable and will generalize well. This is fine, as we know we have made our training data harder. 
-    The test accuracy is also up, which means our test data had few images that had transformation difference w.r.t. train dataset
+ ## Target: 
+     1. Model 1 is working well. We can try to add Random rotation and RandomAffine.
+ ## Results:
+     1. Parameters: **7,264**
+     2. Learning Rate: **0.0015**
+     3. Best Train Accuracy: **99.30**
+     4. Best Test Accuracy: **99.52** (13th Epoch)
+     5. Consistenly 99.4 + validation accuracy from 11th Epoch
+ ## Analysis:
+ The model working fine. There is very minimal difference between train and test accuracies. This proves that the model is stable and will generalize well. This is fine, as we know we have made our training data harder. 
+ The test accuracy is also up, which means our test data had few images that had transformation difference w.r.t. train dataset
 
 ### Training Logs Model 2   
 ![Training Logs Model 2](artifacts/Model_2_logs.png?v=1)
