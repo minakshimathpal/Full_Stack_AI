@@ -24,4 +24,4 @@ jobs:
         
     - name: Run tests with pytest
       run: |
-        pytest Assignment6\tests\test_model.py -v -s
+        pytest Assignment6/tests/test_model.py -v -s
