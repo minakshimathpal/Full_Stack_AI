@@ -16,6 +16,7 @@ This project implements a CNN model for MNIST digit classification using PyTorch
 - Comprehensive training visualization with loss and accuracy plots
 
 ## Project Structure
+```bash
 project/
 ├── src/
 │ ├── model.py # Model architecture definition
@@ -31,7 +32,7 @@ project/
 |__README.md # This file
 |__requirements.txt # To install dependencies
 |__.github/workflows/ml-pipeline.yml # To run the pipeline
-
+```
 
 ## Requirements
 - Python 3.10
@@ -47,7 +48,7 @@ project/
 - Training Time: ~20 epochs
 
 ## Training Visualization
-![Training Plots](artifacts/training_plots.png)
+![Training Plots](./src/artifacts/training_plots.png?v=1)
 
 ## Tests
 The project includes automated tests to verify:
