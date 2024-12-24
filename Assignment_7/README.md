@@ -68,9 +68,9 @@ This project contains three different model implementations:
   3.Fix DropOut, add it to each layer
 ## Results:
    1. Parameters: **7,264**
-   2. Learning Rate:** **0.0015**
-   3. Best Train Accuracy:** **99.68**
-   4. Best Test Accuracy:** **99.31** **(14th Epoch)**
+   2. Learning Rate: **0.0015**
+   3. Best Train Accuracy: **99.68**
+   4. Best Test Accuracy: **99.31** **(14th Epoch)**
 
  ## Analysis: 
      Works!
