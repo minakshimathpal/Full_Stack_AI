@@ -128,13 +128,13 @@ This project contains three different model implementations:
     ```
 
  ## Target: 
-     1. Model 1 is working well. We can try to add Random rotation and RandomAffine.
+  1. Model 1 is working well. We can try to add Random rotation and RandomAffine.
  ## Results:
-     1. Parameters: **7,264**
-     2. Learning Rate: **0.0015**
-     3. Best Train Accuracy: **99.30**
-     4. Best Test Accuracy: **99.52** (13th Epoch)
-     5. Consistenly 99.4 + validation accuracy from 11th Epoch
+  1. Parameters: **7,264**
+  2. Learning Rate: **0.0015**
+  3. Best Train Accuracy: **99.30**
+  4. Best Test Accuracy: **99.52** (13th Epoch)
+  5. Consistenly 99.4 + validation accuracy from 11th Epoch
  ## Analysis:
  The model working fine. There is very minimal difference between train and test accuracies. This proves that the model is stable and will generalize well. This is fine, as we know we have made our training data harder. 
  The test accuracy is also up, which means our test data had few images that had transformation difference w.r.t. train dataset
@@ -187,26 +187,26 @@ This project contains three different model implementations:
 
 ```
 ## Target: 
-        1. Model 3 is working well.
-        2. We added Random rotation and RandomAffine.
-        3. Make model lighter and play with learning rate to see if we can get better results or comparable results    
-           from model 2.
-    ## Results:
-        1. Parameters: **7,264**
-        2. Learning Rate: **0.003**
-        2. Best Train Accuracy: **99.32**
-        3. Best Test Accuracy: **99.48** (11th Epoch)
-        4. Consistenly 99.4 + validation accuracy from 11th Epoch
-    ## Analysis:
-        1. Parameters reduced from **7,264** to **5,797**.
-        2. The model working fine. There is very minimal difference between train and test accuracies. This proves that the model is stable and will generalize well. This is fine, as we know we have made our training data harder. 
-        2. The test accuracy is also up, which means our test data had few images that had transformation difference w.r.t. train dataset
-        3. The model is lighter and the learning rate is higher. This means that the model is learning faster and is more likely to overfit. 
-        4. The model is not overfitting, as the train and test accuracies are very close. 
-        5. The model is not underfitting, as the train and test accuracies are very close. 
-        6. The model is stable, as the train and test accuracies are very close. 
-        7. The model is consistent, as the train and test accuracies are very close and showing 99.4 + validation accuracy from 11th Epoch
-        8. The model is generalizing well, as the train and test accuracies are very close. 
+  1. Model 3 is working well.
+  2. We added Random rotation and RandomAffine.
+  3. Make model lighter and play with learning rate to see if we can get better results or comparable results    
+     from model 2.
+## Results:
+  1. Parameters: **7,264**
+  2. Learning Rate: **0.003**
+  2. Best Train Accuracy: **99.32**
+  3. Best Test Accuracy: **99.48** (11th Epoch)
+  4. Consistenly 99.4 + validation accuracy from 11th Epoch
+## Analysis:
+  1. Parameters reduced from **7,264** to **5,797**.
+  2. The model working fine. There is very minimal difference between train and test accuracies. This proves that the model is stable and will generalize well. This is fine, as we know we have made our training data harder. 
+  2. The test accuracy is also up, which means our test data had few images that had transformation difference w.r.t. train dataset
+  3. The model is lighter and the learning rate is higher. This means that the model is learning faster and is more likely to overfit. 
+  4. The model is not overfitting, as the train and test accuracies are very close. 
+  5. The model is not underfitting, as the train and test accuracies are very close. 
+  6. The model is stable, as the train and test accuracies are very close. 
+  7. The model is consistent, as the train and test accuracies are very close and showing 99.4 + validation accuracy from 11th Epoch
+  8. The model is generalizing well, as the train and test accuracies are very close. 
 
 ### Training Logs Model 3   
 ![Training Logs Model 3](artifacts/Model_3_logs.png?v=1)
