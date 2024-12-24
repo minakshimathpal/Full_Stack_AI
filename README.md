@@ -29,7 +29,7 @@ project/
 ├── tests/│ 
 │ └── test_model.py # Model architecture tests
 ├── conftest.py # Pytest configuration
-|__README.md # This file
+|__README.md 
 |__requirements.txt # To install dependencies
 |__.github/workflows/ml-pipeline.yml # To run the pipeline
 ```
