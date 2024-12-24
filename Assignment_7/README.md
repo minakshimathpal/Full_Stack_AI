@@ -192,7 +192,7 @@ This project contains three different model implementations:
   3. Make model lighter and play with learning rate to see if we can get better results or comparable results    
      from model 2.
 ## Results:
-  1. Parameters: **7,264**
+  1. Parameters: **5,797**
   2. Learning Rate: **0.003**
   2. Best Train Accuracy: **99.32**
   3. Best Test Accuracy: **99.48** (11th Epoch)
