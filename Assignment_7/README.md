@@ -19,7 +19,7 @@ This project contains three different model implementations:
 ## **Model 1** 
    ([Model_1.ipynb](Model_1.ipynb))
    - See model_1_summary for detailed architecture
-    ```
+```
     ----------------------------------------------------------------
             Layer (type)               Output Shape         Param #
     ================================================================
@@ -61,7 +61,7 @@ This project contains three different model implementations:
     Params size (MB): 0.03
     Estimated Total Size (MB): 0.44
     ----------------------------------------------------------------
-    ```  
+```  
     ## Target 
         1. Get the skeleton of the model right.
         2.Perform MaxPooling at RF=7
