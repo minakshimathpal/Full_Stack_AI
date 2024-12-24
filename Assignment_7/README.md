@@ -134,7 +134,7 @@ This project contains three different model implementations:
   2. Learning Rate: **0.0015**
   3. Best Train Accuracy: **99.30**
   4. Best Test Accuracy: **99.52** (13th Epoch)
-  5. Consistenly 99.4 + validation accuracy from 11th Epoch
+  5. Consistenly **99.4+** validation accuracy from 11th Epoch
  ## Analysis:
  The model working fine. There is very minimal difference between train and test accuracies. This proves that the model is stable and will generalize well. This is fine, as we know we have made our training data harder. 
  The test accuracy is also up, which means our test data had few images that had transformation difference w.r.t. train dataset
@@ -196,7 +196,7 @@ This project contains three different model implementations:
   2. Learning Rate: **0.003**
   2. Best Train Accuracy: **99.32**
   3. Best Test Accuracy: **99.48** (11th Epoch)
-  4. Consistenly 99.4 + validation accuracy from 11th Epoch
+  4. Consistenly **99.4+** validation accuracy from 11th Epoch
 ## Analysis:
   1. Parameters reduced from **7,264** to **5,797**.
   2. The model working fine. There is very minimal difference between train and test accuracies. This proves that the model is stable and will generalize well. This is fine, as we know we have made our training data harder. 
