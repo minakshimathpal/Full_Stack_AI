@@ -16,7 +16,7 @@ from model.model import ResNet50
 @st.cache_data
 def load_class_names():
     try:
-        with open("/home/ubuntu/raw_data/extracted/ILSVRC/Data/CLS-LOC/imagenet_classes.json", 'r', encoding='utf-8') as f:
+        with open("D:\TSAI\Full_Stack_AI\Assignment9\CLS-LOC\imagenet_classes.json", 'r', encoding='utf-8') as f:
             # Read the file content first
             content = f.read()
             # Try to clean the content of any control characters
@@ -39,7 +39,7 @@ def load_class_names():
 def load_model():
     try:
         model = ResNet50(num_classes=1000)
-        checkpoint = torch.load("/home/ubuntu/checkpoints/model_best.pth", map_location=torch.device("cpu"))
+        checkpoint = torch.load("D:\TSAI\Full_Stack_AI\Assignment9\checkpoints\model_best.pth", map_location=torch.device("cpu"))
         # Extract just the model state dict from the checkpoint
         if "model_state_dict" in checkpoint:
             model.load_state_dict(checkpoint["model_state_dict"])
