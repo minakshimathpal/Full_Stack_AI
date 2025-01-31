@@ -10,6 +10,12 @@ Sample image from ImageNet-1k after transformations:
 ## Training Infrastructure & Process
 AWS EC2 instance Training
 
+<div style="display: flex; justify-content: space-between; align-items: center;">   
+    <img src="HF_app/running_instance.png" alt="Elephant Prediction" style="width: 48%; margin: 5px;">
+</div>
+
+The model successfully identifies different types of images, as shown in the examples above with an elephant and a husky.
+
 **Setup** :
 - Network Volume: 500GB for ImageNet-1K dataset storage
 - GPU: NVIDIA T4 Tensor Core GPU
@@ -230,4 +236,13 @@ resume: true
 checkpoint_dir: /home/ubuntu/checkpoints
 ```
 
+## Model Deployment
+The trained model is deployed on Hugging Face Spaces and can be accessed at: https://huggingface.co/spaces/mathminakshi/Cifar_classification_using_ReseNet50
+Sample predictions from the deployed model:
 
+<div style="display: flex; justify-content: space-between; align-items: center;">   
+    <img src="HF_app/Elephant.png" alt="Elephant Prediction" style="width: 48%; margin: 5px;">
+    <img src="HF_app/husky.png" alt="Husky Prediction" style="width: 48%; margin: 5px;">
+</div>
+
+The model successfully identifies different types of images, as shown in the examples above with an elephant and a husky.
