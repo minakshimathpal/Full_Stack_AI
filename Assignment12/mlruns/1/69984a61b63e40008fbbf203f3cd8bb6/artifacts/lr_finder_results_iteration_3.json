@@ -1,0 +1,20 @@
+[
+    {
+        "iteration": 1,
+        "start_lr": 1e-07,
+        "end_lr": 1.0,
+        "suggested_lr": null
+    },
+    {
+        "iteration": 2,
+        "start_lr": 1e-08,
+        "end_lr": 1e-07,
+        "suggested_lr": null
+    },
+    {
+        "iteration": 3,
+        "start_lr": 1e-09,
+        "end_lr": 1e-08,
+        "suggested_lr": null
+    }
+]

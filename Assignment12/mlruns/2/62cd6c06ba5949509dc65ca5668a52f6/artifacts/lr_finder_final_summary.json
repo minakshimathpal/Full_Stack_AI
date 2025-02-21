@@ -1,0 +1,40 @@
+{
+    "best_learning_rate": null,
+    "best_loss": Infinity,
+    "conservative_lr": null,
+    "moderate_lr": null,
+    "aggressive_lr": null,
+    "total_iterations": 3,
+    "final_results": [
+        {
+            "iteration": 1,
+            "start_lr": 1e-07,
+            "end_lr": 1.0,
+            "suggested_lr": null,
+            "min_loss": Infinity,
+            "is_best": false,
+            "current_best_lr": null,
+            "current_best_loss": Infinity
+        },
+        {
+            "iteration": 2,
+            "start_lr": 1e-08,
+            "end_lr": 1e-07,
+            "suggested_lr": null,
+            "min_loss": Infinity,
+            "is_best": false,
+            "current_best_lr": null,
+            "current_best_loss": Infinity
+        },
+        {
+            "iteration": 3,
+            "start_lr": 1e-09,
+            "end_lr": 1e-08,
+            "suggested_lr": null,
+            "min_loss": Infinity,
+            "is_best": false,
+            "current_best_lr": null,
+            "current_best_loss": Infinity
+        }
+    ]
+}

@@ -1,0 +1,15 @@
+artifact_uri: file:///D:/TSAI/Assignment12/mlruns/543783941140736445/957f82d0dd5d4a908d64b065372f2cad/artifacts
+end_time: 1739549267006
+entry_point_name: ''
+experiment_id: '543783941140736445'
+lifecycle_stage: active
+run_id: 957f82d0dd5d4a908d64b065372f2cad
+run_name: Iteration_1
+run_uuid: 957f82d0dd5d4a908d64b065372f2cad
+source_name: ''
+source_type: 4
+source_version: ''
+start_time: 1739549259702
+status: 4
+tags: []
+user_id: minakshi.mathpal
