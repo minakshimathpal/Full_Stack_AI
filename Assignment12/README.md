@@ -243,11 +243,13 @@ mlflow ui
 
 ### 3. Text Generation
 
-#### a. Using Streamlit Interface
+#### a. Using Huggingface Spaces
 ```bash
 # Launch the web interface
-streamlit run app.py
+Try the model running on Huggingface Spaces: https://huggingface.co/spaces/mathminakshi/TextGeneratorUsingGpt2
 ```
+![Huggingface_result](./data/Huggingface_result.png)
+
 Features:
 - Interactive text generation
 - Adjustable parameters:
