@@ -69,10 +69,10 @@ Here are the example texts included in the application:
    - Each color represents a unique token
    - Hover over tokens to see their IDs
    - Check the token count and sequence in the information panel
+assignment11/data/Example1.png
+![Example1](assignment11/data/Example1.png)
 
-![Example1](/Assignment11/data/Example1.png)
-
-![Example2](/Assignment11/data/Example2.png)
+![Example2](assignment11/data/Example2.png)
 
 
 ## 🔧 Local Development
