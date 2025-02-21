@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MNIST CNN Comparison</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.socket.io/4.0.1/socket.io.min.js"></script>
+    <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Section - Configuration Panel -->
+        <div class="side-panel">
+            <div class="model-config" id="model1-config">
+                <h2>Model 1 Configuration</h2>
+                <div class="config-form">
+                    <label>Number of Conv2D Layers:
+                        <input type="number" id="model1-layers" min="1" max="5" value="2" onchange="updateKernelInputs(1)">
+                    </label>
+                    <div id="model1-kernels"></div>
+                    <label>Batch Size:
+                        <select id="model1-batch-size">
+                            <option value="32">32</option>
+                            <option value="64" selected>64</option>
+                            <option value="128">128</option>
+                        </select>
+                    </label>
+                    <label>Optimizer:
+                        <select id="model1-optimizer">
+                            <option value="adam">Adam</option>
+                            <option value="sgd">SGD</option>
+                        </select>
+                    </label>
+                    <label>Learning Rate:
+                        <input type="number" id="model1-lr" value="0.001" step="0.0001" min="0.0001" max="0.1">
+                    </label>
+                </div>
+            </div>
+
+            <div class="model-config" id="model2-config">
+                <h2>Model 2 Configuration</h2>
+                <div class="config-form">
+                    <label>Number of Conv2D Layers:
+                        <input type="number" id="model2-layers" min="1" max="5" value="2" onchange="updateKernelInputs(2)">
+                    </label>
+                    <div id="model2-kernels"></div>
+                    <label>Batch Size:
+                        <select id="model2-batch-size">
+                            <option value="32">32</option>
+                            <option value="64" selected>64</option>
+                            <option value="128">128</option>
+                        </select>
+                    </label>
+                    <label>Optimizer:
+                        <select id="model2-optimizer">
+                            <option value="adam">Adam</option>
+                            <option value="sgd">SGD</option>
+                        </select>
+                    </label>
+                    <label>Learning Rate:
+                        <input type="number" id="model2-lr" value="0.001" step="0.0001" min="0.0001" max="0.1">
+                    </label>
+                </div>
+            </div>
+
+            <button id="train-button" onclick="startTraining()">Train Models</button>
+        </div>
+
+        <!-- Right Section - Results -->
+        <div class="results-panel">
+            <div class="plots-container">
+                <div class="plot-row">
+                    <div id="accuracy-plot"></div>
+                    <div id="loss-plot"></div>
+                </div>
+            </div>
+            <div class="predictions-container">
+                <div class="prediction-box">
+                    <h3>Test Image 1</h3>
+                    <img id="test-image-1" src="" alt="Test Image 1">
+                    <div class="prediction-details">
+                        <p>True Label: <span id="true-label-1"></span></p>
+                        <p>Model 1 Prediction: <span id="model1-pred-1"></span></p>
+                        <p>Model 2 Prediction: <span id="model2-pred-1"></span></p>
+                    </div>
+                </div>
+                <div class="prediction-box">
+                    <h3>Test Image 2</h3>
+                    <img id="test-image-2" src="" alt="Test Image 2">
+                    <div class="prediction-details">
+                        <p>True Label: <span id="true-label-2"></span></p>
+                        <p>Model 1 Prediction: <span id="model1-pred-2"></span></p>
+                        <p>Model 2 Prediction: <span id="model2-pred-2"></span></p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="{{ url_for('static', filename='js/main.js') }}"></script>
+</body>
+</html> 
