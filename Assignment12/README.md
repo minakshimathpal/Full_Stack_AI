@@ -180,6 +180,11 @@ which restricts information flow.
 - Training from scratch using PyTorch or TensorFlow.
 - Using Adam optimizer with weight decay.
 - Warm-up and cosine decay for learning rate scheduling.
+
+### Training logs
+
+![Training logs](./data/Training_logs.png)
+
 ---
 
 ## Usage Guide 🚀
