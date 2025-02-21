@@ -29,6 +29,6 @@ def main(name="EnglishBPE", vocab_size=2000, verbose=False):  # Reduced vocab_si
 
 if __name__ == "__main__":
     # Try different vocab sizes
-    for size in [5999,6999]:
+    for size in [5000]:
         print(f"\nTesting vocab_size = {size}")
         main(name=f"EnglishBPE_{size}", vocab_size=size)

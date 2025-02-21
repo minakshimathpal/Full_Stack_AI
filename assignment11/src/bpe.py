@@ -1,4 +1,4 @@
-from utils import get_stats, merge, render_token
+from .utils import get_stats, merge, render_token
 import regex as re
 GPT4_SPLIT_PATTERN = r"""'(?i:[sdmt]|ll|ve|re)|[^\r\n\p{L}\p{N}]?+\p{L}+|\p{N}{1,3}| ?[^\s\p{L}\p{N}]++[\r\n]*|\s*[\r\n]|\s+(?!\S)|\s+"""
 class Tokenizer:
