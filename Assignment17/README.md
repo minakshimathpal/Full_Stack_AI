@@ -84,6 +84,11 @@ This application uses:
 - PyTorch
 - Transformers
 
+## Hugging Face Spaces Results
+
+You can try out the application and view generated images on Hugging Face Spaces:
+
+🔗 Live Demo: [Chromatic Diffusion Studio on Hugging Face Spaces](https://huggingface.co/spaces/mathminakshi/chromatic-diffusion-studio)
 ## Credits
 
 Created by Minakshi Mathur as part of the ERA V3 course.
