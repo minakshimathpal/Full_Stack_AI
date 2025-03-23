@@ -1,13 +1,11 @@
 ---
 title: Chromatic Diffusion Studio
 emoji: 👀
-colorFrom: blue
-colorTo: blue
 sdk: streamlit
 sdk_version: 1.43.2
 app_file: app.py
 pinned: false
-short_description: Generate beautiful images with Stable Diffusion an
+short_description: Generate beautiful images with Stable Diffusion 
 ---
 
 Check out the configuration reference at https://huggingface.co/docs/hub/spaces-config-reference
