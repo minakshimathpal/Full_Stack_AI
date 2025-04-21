@@ -1,3 +1,4 @@
+Assignment5_MLOPs_Basics
 # 🧠 MNIST CNN Classifier with GitHub Actions & Tests
 
 ## 🎯 Objective
@@ -75,3 +76,6 @@ Minakshi Mathpal
 [GitHub](https://github.com/minakshimathpal) | [LinkedIn](https://www.linkedin.com/in/minakshi-mathpal-9b78b915b)
 
 
+
+"I am README" 
+ main

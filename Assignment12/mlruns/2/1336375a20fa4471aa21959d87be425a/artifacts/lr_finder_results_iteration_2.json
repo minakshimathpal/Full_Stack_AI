@@ -1,0 +1,10 @@
+{
+    "iteration": 2,
+    "start_lr": 5.4325027820688135e-08,
+    "end_lr": 4.889252503861932e-07,
+    "suggested_lr": 7.92245502194629e-08,
+    "min_loss": 3.986105599310557,
+    "is_best": false,
+    "current_best_lr": 1.629750834620644e-07,
+    "current_best_loss": 3.6662474079648613
+}

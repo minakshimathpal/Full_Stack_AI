@@ -1,0 +1,10 @@
+{
+    "iteration": 2,
+    "start_lr": 1e-08,
+    "end_lr": 1e-07,
+    "suggested_lr": null,
+    "min_loss": Infinity,
+    "is_best": false,
+    "current_best_lr": null,
+    "current_best_loss": Infinity
+}

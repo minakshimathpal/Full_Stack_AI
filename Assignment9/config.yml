@@ -1,0 +1,32 @@
+
+batch_size: 256
+name: resnet_50_onecycle
+start_lr: 0.0000001
+end_lr: 100
+num_classes: 1000
+num_iter: 100
+output_dir: lr_finder_plots
+workers: 8
+max_lr: 0.0675
+momentum: 0.9
+weight_decay: 0.0001
+epochs: 4
+pct_start: 0.3
+div_factor: 25.0
+final_div_factor: 0.0001
+optimizer: SGD
+max_lr: 0.675
+epochs: 10
+steps_per_epoch: <steps_per_epoch_value>  # Replace with actual value
+base_momentum: 0.85
+max_momentum: 0.95
+cycle_momentum: true
+total_steps: <total_steps_value>  # Replace with actual value
+pct_start: 0.3
+div_factor: 25.0
+final_div_factor: 0.0001
+three_phase: true
+initial_model_path : ./initial_model_state.pth
+data_dir: /home/ubuntu/raw_data/extracted/ILSVRC
+resume: true
+checkpoint_dir: /home/ubuntu/checkpoints

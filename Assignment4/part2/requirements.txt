@@ -1,0 +1,7 @@
+flask==2.0.1
+torch==2.0.0
+torchvision==0.15.0
+numpy==1.21.0
+matplotlib==3.4.2
+flask-socketio==5.1.1
+python-socketio==5.4.0 

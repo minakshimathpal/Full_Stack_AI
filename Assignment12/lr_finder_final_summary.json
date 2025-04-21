@@ -1,0 +1,40 @@
+{
+    "best_learning_rate": 1.629750834620644e-07,
+    "best_loss": 3.6662474079648613,
+    "conservative_lr": 1.629750834620644e-08,
+    "moderate_lr": 5.4325027820688135e-08,
+    "aggressive_lr": 1.629750834620644e-07,
+    "total_iterations": 3,
+    "final_results": [
+        {
+            "iteration": 1,
+            "start_lr": 1e-07,
+            "end_lr": 1.0,
+            "suggested_lr": 1.629750834620644e-07,
+            "min_loss": 3.6662474079648613,
+            "is_best": true,
+            "current_best_lr": 1.629750834620644e-07,
+            "current_best_loss": 3.6662474079648613
+        },
+        {
+            "iteration": 2,
+            "start_lr": 1.629750834620644e-08,
+            "end_lr": 1.6297508346206441e-06,
+            "suggested_lr": 2.056512308348651e-08,
+            "min_loss": 3.95302753128198,
+            "is_best": false,
+            "current_best_lr": 1.629750834620644e-07,
+            "current_best_loss": 3.6662474079648613
+        },
+        {
+            "iteration": 3,
+            "start_lr": 2.056512308348651e-09,
+            "end_lr": 2.0565123083486511e-07,
+            "suggested_lr": 2.5950242113997355e-09,
+            "min_loss": 4.196960075597598,
+            "is_best": false,
+            "current_best_lr": 1.629750834620644e-07,
+            "current_best_loss": 3.6662474079648613
+        }
+    ]
+}
