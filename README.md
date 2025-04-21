@@ -43,16 +43,6 @@ This project demonstrates a complete pipeline to train CNN models and visualize 
 
 ---
 
-## 📂 Folder Structure
-```
-├── model/ # CNN architectures for various kernel configs
-├── training/ # Training loops, loss tracking
-├── frontend/ # UI to show logs and model comparison
-├── utils/ # Data loaders, graph plotting, etc.
-├── main.py # Main training script
-├── README.md # Project documentation
-```
-
 ## 📊 Features Implemented
 
 - ✅ Customizable model architecture
