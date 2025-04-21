@@ -1,81 +1,58 @@
-Assignment5_MLOPs_Basics
-# 🧠 MNIST CNN Classifier with GitHub Actions & Tests
+# Full Stack AI Course Assignments
 
-## 🎯 Objective
+This repository contains the assignments completed as part of the Full Stack AI course. Each assignment is housed in its respective branch, and the `main` branch holds the final integration of all the assignments.
 
-Build a compact CNN model for MNIST digit classification that meets the following criteria:
+## Repository Structure
 
-- ✅ **Less than 25,000 parameters**
-- ✅ **Achieves 95%+ training accuracy in just 1 epoch**
-- ✅ **Includes CI/CD pipeline using GitHub Actions to verify model constraints**
+The repository is organized as follows:
 
----
+- **Main Branch**: Contains the integrated version of all assignments completed throughout the course.
+- **Assignment Branches**: Each assignment has its own branch, which includes the relevant code, notes, and any other resources for that particular task.
 
-## 📦 Features Implemented
+## Assignment List
 
-### ✅ Base Assignment
-- Built a compact CNN with <25K trainable parameters.
-- Achieves **>95% accuracy in 1 epoch** using Adam optimizer.
-- Configured **GitHub Actions** to automatically:
-  - ✅ Test model parameter count
-  - ✅ Test 1-epoch training accuracy
-- Uploaded **screenshots and links** to GitHub Actions run and training logs.
+Each branch represents a different assignment in the course:
 
-### 🚀 Advanced Features
-- 🔁 **Image Augmentation** using `torchvision.transforms`
-- 🧪 **Additional CI Tests**:
-  1. Test for training time under threshold
-  2. Test for correct model architecture
-  3. Test for dataset integrity (image shape & labels)
-- 🟢 **Build Pass Badge** added to README
+1. **Assignment 1 - [Assignment Name]**  
+   - Brief description of the assignment.
+   - Technologies used: [list any relevant technologies, frameworks, etc.]
+   
+2. **Assignment 2 - [Assignment Name]**  
+   - Brief description of the assignment.
+   - Technologies used: [list any relevant technologies, frameworks, etc.]
+   
+3. **Assignment 3 - [Assignment Name]**  
+   - Brief description of the assignment.
+   - Technologies used: [list any relevant technologies, frameworks, etc.]
 
----
+(Continue this list for all assignments)
 
-## 🧪 GitHub Actions Setup
+## Setup Instructions
 
-### 📁 `.github/workflows/test_model.yml`
+To run any of the assignments locally, follow these steps:
 
-Includes steps to:
-- Set up environment and dependencies
-- Train model for 1 epoch
-- Assert that:
-  - `model.parameters_count < 25,000`
-  - `training_accuracy >= 95%`
-  - Additional custom tests pass
+1. Clone the repository:
 
----
+    ```bash
+    git clone https://github.com/your-username/full_stack_AI.git
+    ```
 
-## 💻 Tech Stack
+2. Checkout the branch for the specific assignment you want to work on:
 
-- **Language**: Python 3.8+
-- **Libraries**: PyTorch, TorchVision, NumPy
-- **Automation**: GitHub Actions
-- **Testing**: PyTest + Custom Python Scripts
+    ```bash
+    git checkout [branch-name]
+    ```
 
----
+3. Install the necessary dependencies (if any):
 
-## 📸 Submission Checklist
+    ```bash
+    pip install -r requirements.txt
+    ```
 
-- ✅ GitHub Actions Test Screenshot  
-- ✅ [GitHub Actions Run Link](https://github.com/yourusername/mnist-cnn-ci/actions)  
-- ✅ [README.md](https://github.com/yourusername/mnist-cnn-ci/blob/main/README.md)  
-- ✅ Augmented Sample Image Screenshot  
-- ✅ Test Code for 3 Unique Validations
+4. Follow the instructions in the respective assignment folder to run the code.
 
----
+## Contribution
 
-## 📛 Badge
-
-![Build Status](https://github.com/yourusername/mnist-cnn-ci/actions/workflows/test_model.yml/badge.svg)
-
----
-
-## ✨ Author
-
-Minakshi Mathpal  
-[GitHub](https://github.com/minakshimathpal) | [LinkedIn](https://www.linkedin.com/in/minakshi-mathpal-9b78b915b)
+If you'd like to contribute or make improvements to the assignments, feel free to fork the repository, create a branch, and submit a pull request.
 
 
-
-"I am README" 
- main
